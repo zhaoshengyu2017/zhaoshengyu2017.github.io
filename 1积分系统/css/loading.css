@@ -1,0 +1,44 @@
+.top1 {
+    margin: 36px 30px 66px 30px;
+}
+
+.top1 {
+    width: 687px;
+    height: 71px;
+    font-family: PingFangSC-Medium;
+    font-size: 30px;
+    font-weight: normal;
+    font-stretch: normal;
+    line-height: 40px;
+    letter-spacing: 0px;
+    color: #72413d;
+}
+
+.top2 {
+    margin: 0 285px 66px;
+}
+
+.top3 input {
+    border-bottom: 2px #c7c7c7 solid
+}
+
+button {
+    width: 690px;
+    height: 80px;
+    background-image: linear-gradient( #f1f1f1, #f1f1f1), linear-gradient( #0c86eb, #0c86eb);
+    background-blend-mode: normal, normal;
+    border-radius: 4px;
+}
+
+button p {
+    width: 59px;
+    height: 28px;
+    font-family: PingFangSC-Regular;
+    font-size: 30px;
+    font-weight: normal;
+    font-stretch: normal;
+    line-height: 4px;
+    letter-spacing: 0px;
+    color: #424242;
+    display: inline-block;
+}
