@@ -1,0 +1,32 @@
+span {
+    display: inline-block;
+}
+
+.head #one {
+    font-size: 28px;
+    margin: 36px 30px;
+    color: #969696;
+}
+
+.head #two {
+    font-size: 26px;
+    margin: 36px 40px 36px 0px;
+    color: #72413d;
+}
+
+.head #three {
+    font-size: 56px;
+    margin: 0px 14px 36px 30px;
+    color: #72413d;
+}
+
+.head #four {
+    font-size: 24px;
+    color: #f48482;
+}
+
+.ge {
+    height: 16px;
+    width: 750px;
+    background-color: #f1f1f1;
+}

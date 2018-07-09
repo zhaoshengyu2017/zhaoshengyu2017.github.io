@@ -1,0 +1,23 @@
+p+.one {
+    font-size: 36px;
+    color: #424242;
+    margin: 36px 30px 80px;
+}
+
+p+.two {
+    font-size: 30px;
+    color: #72413d;
+    margin-left: 30px;
+}
+
+p+.three {
+    font-size: 28px;
+    color: #424242;
+    margin: 36px 40px 56px 30px;
+}
+
+p+.four {
+    font-size: 28px;
+    color: #424242;
+    margin: 36px 30px;
+}

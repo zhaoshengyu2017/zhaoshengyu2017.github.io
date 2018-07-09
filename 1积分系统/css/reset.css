@@ -40,6 +40,10 @@ h6 {
     overflow-x: hidden
 }
 
+body {
+    -webkit-overflow-scrolling: touch;
+}
+
 h1,
 h2,
 h3,
