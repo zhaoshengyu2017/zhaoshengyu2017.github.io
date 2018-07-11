@@ -88,15 +88,14 @@ div .seven1 {
     color: #424242;
     line-height: 4px;
     letter-spacing: 0px;
-    margin: 36px 28px 24px;
 }
 
 div .seven2 {
     font-size: 36px;
-    line-height: 4px;
+    line-height: 29px;
     letter-spacing: 0px;
     color: #72413d;
-    margin: 0 16px 24px 28px;
+    margin-top: 35px;
 }
 
 div .seven3 {
@@ -106,8 +105,8 @@ div .seven3 {
     line-height: 4px;
     letter-spacing: 0px;
     color: #424242;
-    margin-right: 16px;
-    margin-left: 24px;
+    margin-top: -13px;
+    margin-left: 75px;
 }
 
 div .seven4 {
@@ -117,7 +116,8 @@ div .seven4 {
     line-height: 4px;
     letter-spacing: 0px;
     color: #969696;
-    margin: 0 16px 24px 28px;
+    margin-top: 44px;
+    margin-left: 5px;
     margin-bottom: 36px;
 }
 
@@ -126,6 +126,8 @@ div.jk {
     width: 720px;
     background-color: #ffffff;
     border-radius: 4px;
+    top: 150px;
+    left: 15px;
 }
 
 button {
@@ -141,4 +143,32 @@ img {
     width: 100px;
     height: 100px;
     background-color: #ffffff;
+}
+
+.hh {
+    height: 800px;
+    background: url(../image/tou.jpg) no-repeat 50% 25px, -webkit-linear-gradient(rgba(254, 80, 47, 1), rgba(221, 36, 118, 0.5));
+    position: relative;
+}
+
+.j1,
+.jk,
+.j2 {
+    position: absolute;
+}
+
+.hh .jk {
+    top: 241px;
+    left: 14px;
+}
+
+.j1 {
+    top: 50px;
+    left: 24px;
+}
+
+.j2 {
+    width: 500px;
+    left: 132px;
+    top: 56px;
 }
