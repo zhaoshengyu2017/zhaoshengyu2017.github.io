@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/loading.css">
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/common.js"></script>
+    <title>绑定手机号码</title>
+</head>
+
+<body>
+    <div class="top1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本界面是供已通过官网、官微完成预登记或现场登记的观众查询积分、兑换礼品的平台，请您输入登记时所填写的手机号码，快速查询积分，兑换礼品。
+    </div>
+    <div class="top3">
+        <input type="text" id="phone" placeholder="请输入手机号码" style="font-size: 130%;">
+        <br>
+        <br>
+        <br>
+        <input type="text" id="vcode" placeholder="请填写手机验证码" style="font-size: 130%;">
+        <input type="submit" value="获取验证码" id="btn2">
+        <button id="Login">提交</button>
+    </div>
+
+    <script type="text/javascript">
+        var exhID = "346";
+        var phoneReg = /^(0|86|17951)?(13[0-9]|15[012356789]|16[6]|19[89]|17[0-9]|18[0-9]|14[57])[0-9]{8}$/;
+
+        $(document).ready(function () {
+
+                var btn = true;
+                var btn2 = true;
+
+                $("#btn2").click(function () {
+                    btn = false;
+
+                    if (!btn2) {
+                        return;
+                    }
+
+                    // var phone = $.trim($("#phone").val());
+                    //如果手机号码输入为空，则再输入框后插入错误信息
+                    if ($('#phone').val == '') {
+                        $('#phone').after(alert('手机号码不能为空！'));　　　　
+                        return;　　
+                    }
+                    // 验证输入的电话号码是否是11位数字
+                    else if (!phoneReg.test($('#phone').val())) {
+
+                        $('#phone').after(alert('请输入正确的手机号码！'));　　　　
+                        return;
+                    } else {
+                        btn2 = false;
+                        if (btn) {
+                            return
+                        }
+
+                        $.post("https://api.exporegist.com/common/api/sms/GetVerificationCode", {
+                            mobile: $('#phone').val(),
+                            sign: "中国国际家纺展",
+                            source: "APP"
+                        }, function (data) {
+                            if (data.status == "OK") {
+
+                                alert('验证码已发送!')
+
+                                sendemail();
+
+                            } else {
+                                alert(data.ErrorMsg)
+                            }
+
+                        })
+                    }
+                })
+
+                //六十秒倒计时
+                var countdown = 60;
+
+                function sendemail() {
+                    var obj = $("#btn2");
+                    settime(obj);
+
+                }
+
+                function settime(obj) {
+                    //发送验证码倒计时
+                    if ($.trim($("#phone").val()) == "") {
+
+                        return;
+                    }
+                    if (countdown == 0) {
+                        obj.attr('disabled', false);
+                        //obj.removeattr("disabled"); 
+                        obj.val("获取验证码");
+                        countdown = 60;
+                        btn = true;
+                        btn2 = true;
+                        return;
+                    } else {
+                        obj.attr('disabled', true);
+                        obj.val("重新发送(" + countdown + ")");
+                        obj
+                        countdown--;
+                    }
+                    setTimeout(function () {
+                        settime(obj)
+                    }, 1000)
+                }
+
+            },
+            //提交验证
+            $("#Login").bind("click", function () {
+                var vcode = $.trim($("#vcode").val());
+                var phone = $.trim($("#phone").val());
+                var openID = GetQueryString("openid");
+                if ($.trim($("#phone").val()) == "" || $.trim($("#vcode").val()) == "") {
+                    alert("手机号或者验证码不能为空!");
+
+                } else {
+                    $.post("https://api.exporegist.com/score/api/Login/BindingMobile ", {
+                        ExhID: exhID,
+                        OpenID: openID,
+                        VerificationCode: vcode,
+                        PsjMobile: phone
+                    }, function (data) {
+                        if (data.Status == "OK") {
+                            var result = data.data;
+                            if (result == 0) {
+                                alert("手机号码不存在，请先登记!")
+                                window.location.href =
+                                    "http://ezt.exporegist.com/ccinterwxcn/index.html";
+                            } else if (result == "1") {
+                                window.parent.location.href =
+                                    "http://Ezt.exporegist.com/zhaoshengyu/jf/html/integral.html?openid=" +
+                                    openID;
+                            } else if (result == "2") {
+                                alert("验证码不正确!");
+                            } else if (result == "3") {
+                                alert("您的预登记信息尚未被审核通过，请在收到成功注册的短信通知或邮件后再来登录查看。");
+                            }
+                        } else {
+                            
+                            alert(data.Msg);
+                        }
+                    })
+                }
+            }));
+    </script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script type="text/javascript" src="../js/Wxchat.js"></script>
+
+
+    <!-- <script type="text/javascript"> 
+    var times = 0;
+
+     function change(btn2) {  btn2.style.background = times % 2 == 0 ? '#72413d' : 'white'; times++; };
+    </script> -->
+
+
+
+
+
+</body>
+
+</html>

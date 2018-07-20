@@ -1,0 +1,27 @@
+p+.one {
+    font-size: 20px;
+    color: #424242;
+    margin: 5%
+}
+
+p+.two {
+    font-size: 17px;
+    color: #72413d;
+    margin-left: 6%;
+}
+
+p+.three {
+    font-size: 14px;
+    color: #424242;
+    margin: -1% 6%;
+}
+
+p+.four {
+    font-size: 14px;
+    color: #424242;
+    margin: 26px 30px;
+}
+
+body {
+    height: 100%;
+}

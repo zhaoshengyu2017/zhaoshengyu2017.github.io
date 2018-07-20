@@ -1,0 +1,73 @@
+body,
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+dl,
+dt,
+dd,
+input {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: microsoft yahei;
+    font-size: 14px;
+}
+
+li {
+    list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 400;
+}
+
+img {
+    border: 0 none;
+    vertical-align: middle;
+}
+
+a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #000;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.clerafix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+.w {
+    width: 1200px;
+    margin: 0 auto;
+}

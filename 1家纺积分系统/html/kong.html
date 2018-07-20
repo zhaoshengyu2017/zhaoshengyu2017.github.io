@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>中国国际家用纺织品及辅料博览会</title>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/common.js"></script>
+    <script>
+        $(function() {
+            var openid = GetQueryString("openid");
+            // var openid = "omg3LwLb9LGCNowo6ufLJloesAbw";
+
+            var exhID = "346";
+
+            if (openid != null) {
+                $.post("https://api.exporegist.com/score/api/Login/CheckHasOpenID", {
+                    ExhID: exhID,
+                    OpenID: openid
+                }, function(data) {
+                    if (data.Status == "OK") {
+                        var url = "";
+                        if (data.data == "0") {
+                            url = "http://Ezt.exporegist.com/zhaoshengyu/jf/html/landingpage.html";
+                        } else if (data.data == "1") {
+                            url = "http://Ezt.exporegist.com/zhaoshengyu/jf/html/integral.html";
+                        }
+                        window.location.href = url + "?openid=" + openid;
+
+                    } else
+                        alert(data.Msg);
+                });
+            } else {
+                window.location.href = "https://api.eastfair.com/wechat/client/openId?client_oauth_token=EastfairCreditApplication&appId=wx3dd63cc84aeefbef&url=http%3a%2f%2fEzt.exporegist.com%2fzhaoshengyu%2fjf%2fhtml%2fkong.html";
+            }
+
+
+        })
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
